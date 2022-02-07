@@ -1,0 +1,95 @@
+$dorado: #efb810;
+$azul: #074db4;
+
+.abody {
+	font-size: 1.6rem;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url("/src/assets/img/auth/905573.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100vh;
+	.aconteinerr {
+		/* background-image: linear-gradient(rgba(78, 78, 78, 0.5), rgba(0, 0, 0, 0.5));
+		box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+			rgba(0, 0, 0, 0.22) 0px 15px 12px; */
+
+		height: 60rem;
+		width: 55rem;
+		margin-left: 40rem;
+		padding-top: 5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background-repeat: no-repeat;
+		#aformulario {
+			#alogo {
+				width: 20rem;
+				height: 20rem;
+				background-image: url("/src/assets/img/auth/b03c23_0d6678dc0d4b4e7fbb44d76daf1efaef_mv2.png");
+				background-size: cover;
+				margin-left: 10rem;
+			}
+			justify-content: center;
+			align-items: center;
+			label {
+				color: #ffffff;
+				font-style: italic;
+			}
+			#aemailHelp {
+				color: #818181;
+				font-weight: normal;
+			}
+			.ls {
+				text-align: center;
+				font-weight: bold;
+				font-size: 2rem;
+				.aform-control {
+					text-align: center;
+					font-size: 1.5rem;
+					width: 40rem;
+					height: 4rem;
+					border-radius: 5rem;
+					font-weight: bold;
+					font-style: italic;
+				}
+				.aform-control:hover {
+					border-color: var(--dorado);
+				}
+				.aform-control:active {
+					border-color: var(--dorado);
+				}
+			}
+			.abuttons {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+				justify-content: center;
+				align-items: center;
+				#abt1 {
+					margin-top: 1rem;
+					width: 40rem;
+					height: 4rem;
+					border-radius: 4rem;
+					font-size: 1.5rem;
+					font-weight: bold;
+					text-transform: none;
+				}
+				#abt1:hover {
+					color: $dorado;
+					border-color: $dorado;
+				}
+				#abt2 {
+					color: white;
+					font-size: 1.5rem;
+					font-weight: bold;
+					text-transform: none;
+				}
+
+				#abt2:hover {
+					color: $dorado;
+				}
+			}
+		}
+	}
+}

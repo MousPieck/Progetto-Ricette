@@ -1,0 +1,58 @@
+$fontHeading: "PT Sans", sans-serif;
+$fontParrafos: "Open Sans", sans-serif;
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	font-size: 1.6rem;
+	line-height: 1.5;
+}
+
+.umain_card {
+	margin: 4rem auto;
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	row-gap: 4rem;
+	.card {
+		margin: 0 auto;
+		box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+			rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+		img {
+			border-radius: 0.5rem;
+			height: 23rem;
+		}
+		width: 30rem;
+		height: auto;
+		padding: 0.5rem 1rem;
+		.card-body {
+			text-align: center;
+			h5 {
+				font-weight: bold;
+				font-size: 1.8rem;
+				border-bottom: 1px solid #99999967;
+			}
+			.footer {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				border-top: 1px solid #99999967;
+				p {
+					font-weight: bold;
+					margin: 0;
+					span {
+						font-weight: normal;
+					}
+				}
+			}
+		}
+	}
+}

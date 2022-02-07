@@ -1,0 +1,111 @@
+@use "./global/html";
+@use "./view/login.scss";
+@use "./view//utenti.scss";
+$colore-gold: #efb810;
+$colore-azule: #046ec5;
+
+#hbody {
+	background: #ada996; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#eaeaea,
+		#dbdbdb,
+		#f2f2f2,
+		#ada996
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#eaeaea,
+		#dbdbdb,
+		#f2f2f2,
+		#ada996
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#hheader {
+	background: linear-gradient(rgba(0, 0, 0, 0.596), rgba(0, 0, 0, 0.712)),
+		url(../assets/img/auth/905573.jpg);
+	background-size: cover;
+	background-position: center center;
+	height: 100vh;
+	.hbarra {
+		padding-top: 5rem;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+	.hheader-content {
+		height: 35rem;
+		width: 60rem;
+		margin: 2rem auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		button {
+			border-radius: 1rem;
+			width: 15rem;
+			font-weight: bold;
+			height: 5rem;
+			font-size: 2rem;
+		}
+		button:hover {
+			color: $colore-gold;
+		}
+	}
+}
+// #hmain {
+// 	display: grid;
+// 	grid-template-columns: repeat(3, 2fr);
+// 	margin-left: 16rem;
+// 	.card {
+// 		padding: 1rem;
+// 		border-radius: 1.5rem;
+// 		width: 24rem !important;
+// 		margin-top: 5rem;
+// 		box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+// 			rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+// 		img {
+// 			border-radius: 1rem;
+// 		}
+// 		.card-body {
+// 			.hcard__titolo {
+// 				border-top: 1px solid $colore-gold;
+// 				border-bottom: 1px solid $colore-gold;
+// 				margin-bottom: 0.5rem;
+// 				p {
+// 					font-weight: bold;
+// 					color: #68696b !important;
+// 				}
+// 			}
+// 			.hcard__autore {
+// 				border-top: 1px solid $colore-gold;
+// 				border-bottom: 1px solid $colore-gold;
+// 				p {
+// 					font-weight: bold;
+// 					color: #68696b !important;
+// 				}
+// 			}
+// 			.card-text {
+// 				text-align: center;
+// 			}
+// 		}
+// 	}
+
+// 	.card:hover {
+// 		box-shadow: rgb(241, 198, 3) 0px 0px 0px 3px;
+// 	}
+// }
+.error {
+	border-color: 1px solid red;
+	margin: 0 auto;
+	text-align: center;
+	padding: 0.5rem;
+
+	p {
+		margin: 0;
+		color: red;
+	}
+}
+#hfooter {
+	margin-top: 5rem;
+}
