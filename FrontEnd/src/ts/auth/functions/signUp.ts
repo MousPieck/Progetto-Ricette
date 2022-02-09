@@ -60,12 +60,25 @@ async function enviareRichiestaLogin(data: signUp): Promise<void> {
 		await utenteAxios
 			.post("/signup", data)
 			.then((res: AxiosResponse<any>): void => {
-				const { msg }: { msg: string } = res.data;
+				const {
+					msg,
+					msgError,
+					errors,
+				}: { msg: string; msgError: string; errors: object[] } =
+					res.data;
 				if (msg == "register") {
 					window.location.replace(URLS.LOGIN);
 					return;
 				}
-				menssageError(msg);
+				if (msgError || errors) {
+					const error = <HTMLDivElement>(
+						document.querySelector(".error")
+					);
+					if (!error) {
+						form.appendChild(menssageError("Il Email esiste"));
+						return;
+					}
+				}
 			});
 	} catch (err) {
 		console.log(err);

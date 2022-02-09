@@ -4,6 +4,18 @@ import { recette } from "../interface/interface";
 import { utenteAxios } from "../axios";
 const mostrareRicette = async () => {
 	if (window.location.href === URLS.HOME) {
+		const id = sessionStorage.getItem("id");
+		if (id) {
+			const abtnlogin = <HTMLLinkElement>document.querySelector("#hbtn1");
+			abtnlogin.removeAttribute("href");
+			abtnlogin.children[0].classList.remove("btn-dark");
+			abtnlogin.children[0].textContent = "Pannello ";
+			abtnlogin.children[0].classList.add("btn-primary");
+			abtnlogin.addEventListener("click", () =>
+				window.location.replace(URLS.UTENTI),
+			);
+		}
+
 		await ricette();
 	}
 };

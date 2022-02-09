@@ -9,9 +9,10 @@ const validatareCredenziale = () => {
 		}
 	} else if (window.location.href === URLS.LOGIN) {
 		return window.location.replace(URLS.UTENTI);
-	} else if (window.location.href === URLS.HOME) {
-		return window.location.replace(URLS.UTENTI);
-	}
+	} 
+	// else if (window.location.href === URLS.HOME) {
+	// 	return window.location.replace(URLS.UTENTI);
+	// }
 };
 
 export { validatareCredenziale };

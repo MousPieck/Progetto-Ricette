@@ -7,7 +7,7 @@ import { utenteAxios } from "../../axios";
 const form = <HTMLFormElement>document.getElementById("aformulario");
 const email = <HTMLInputElement>document.querySelector("#correo");
 const password = <HTMLInputElement>document.querySelector("#password");
-const error = <HTMLDivElement>document.querySelector(".error");
+
 const signIn = async () => {
 	const data: login = {
 		email: email.value,
@@ -26,11 +26,9 @@ const enviareDati = async (data: login) => {
 			}: { id: string; errors: object[]; msgError: string } = r.data;
 
 			if (msgError || errors) {
+				const error = <HTMLDivElement>document.querySelector(".error");
 				if (!error)
 					form.appendChild(menssageError("Credenziale incorrette"));
-				setTimeout(() => {
-					form.removeChild(error);
-				}, 3000);
 			} else {
 				sessionStorage.setItem("id", id);
 				window.location.replace(URLS.UTENTI);

@@ -32,9 +32,10 @@ body {
 		}
 		width: 30rem;
 		height: auto;
-		padding: 0.5rem 1rem;
+		padding: 0.5rem 1rem 0rem 1rem;
 		.card-body {
 			text-align: center;
+			padding: 1.5rem 1.5rem 0.5rem 1.5rem;
 			h5 {
 				font-weight: bold;
 				font-size: 1.8rem;
@@ -54,5 +55,19 @@ body {
 				}
 			}
 		}
+	}
+}
+#hheader {
+	h1 {
+		color: white;
+	}
+	h2 {
+		color: white;
+	}
+	h3 {
+		color: white;
+	}
+	h4 {
+		color: white;
 	}
 }

@@ -5,26 +5,28 @@ $colore-gold: #efb810;
 $colore-azule: #046ec5;
 
 #hbody {
-	background: #ada996; /* fallback for old browsers */
-	background: -webkit-linear-gradient(
-		to right,
-		#eaeaea,
-		#dbdbdb,
-		#f2f2f2,
-		#ada996
-	); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(
-		to right,
-		#eaeaea,
-		#dbdbdb,
-		#f2f2f2,
-		#ada996
-	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	// background: #ada996; /* fallback for old browsers */
+	// background: -webkit-linear-gradient(
+	// 	to right,
+	// 	#eaeaea,
+	// 	#dbdbdb,
+	// 	#f2f2f2,
+	// 	#ada996
+	// ); /* Chrome 10-25, Safari 5.1-6 */
+	// background: linear-gradient(
+	// 	to right,
+	// 	#eaeaea,
+	// 	#dbdbdb,
+	// 	#f2f2f2,
+	// 	#ada996
+	// ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #hheader {
 	background: linear-gradient(rgba(0, 0, 0, 0.596), rgba(0, 0, 0, 0.712)),
 		url(../assets/img/auth/905573.jpg);
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+		rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 	background-size: cover;
 	background-position: center center;
 	height: 100vh;
@@ -35,17 +37,32 @@ $colore-azule: #046ec5;
 		align-items: center;
 	}
 	.hheader-content {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
 		height: 35rem;
 		width: 60rem;
-		margin: 2rem auto;
+		margin: 6rem auto;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		text-align: center;
+		h1 {
+			font-size: 15rem;
+			font-weight: bold;
+			span {
+				color: green;
+			}
+		}
+		h3 {
+			font-size: 6;
+		}
 		button {
 			border-radius: 1rem;
 			width: 15rem;
-			font-weight: bold;
+
 			height: 5rem;
+			text-transform: none;
 			font-size: 2rem;
 		}
 		button:hover {
