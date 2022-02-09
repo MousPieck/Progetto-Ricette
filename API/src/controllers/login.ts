@@ -14,18 +14,18 @@ const loginPost = async (
     const utent: IUTente = await Utente.findOne({ email });
     if (!utent) {
       return res.json({
-        msg: `Il e-mail: ${email},non esiste`
+        msgError: `Il e-mail: ${email},non esiste`
       });
     } else {
-      const utente: Boolean = bcrypt.compareSync(password, utent.password);
-      if (utente) {
+      const pass: Boolean = bcrypt.compareSync(password, utent.password);
+      if (pass) {
         return res.json({
           msg: `login`,
           id: utent._id
         });
       } else {
         return res.json({
-          msg: `La password non è corretta`
+          msgError: `La password non è corretta`
         });
       }
     }
@@ -40,13 +40,14 @@ const signUpPost = async (
   next: NextFunction
 ): Promise<Response<any, Record<string, any>> | undefined> => {
   try {
-    const utente = new Utente(req.body);
-    const { email } = req.body;
-    const utent = await Utente.findOne({ email });
+    const utente: IUTente = new Utente(req.body);
+    const { email }: IUTente = req.body;
+    const utent: IUTente = await Utente.findOne({ email });
     if (utent) {
-      return res.json({
-        msg: 'Il email esiste'
+      res.json({
+        msgError: 'Il email esiste'
       });
+      return;
     }
     await utente.save();
     res.json({

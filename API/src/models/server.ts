@@ -21,27 +21,26 @@ class Server {
     this.routersV();
     this.listen();
   }
-  async connectdb(): Promise<void> {
+  private async connectdb(): Promise<void> {
     await dbConnection();
   }
 
-  middlewares(): void {
+  private middlewares(): void {
     this.app.use(cors());
     this.app.use(morgan('dev'));
     this.app.use(express.json());
     this.app.use(express.text({ type: 'text/html' }));
-    this.app.use(express.urlencoded({ extended: false }));
+    this.app.use(express.urlencoded({ extended: true }));
     this.app.use(multer.single('file'));
-    this.app.use(express.static('public'));
   }
 
-  routersV(): void {
+  private routersV(): void {
     this.app.use(this.usersPath, require('../routers/utenti'));
     this.app.use(this.usersAth, require('../routers/login'));
     this.app.use(this.prodottiPath, require('../routers/prodotti'));
   }
 
-  listen(): void {
+  private listen(): void {
     this.app.listen(this.port, () => {
       console.log(`app iniziata in ${this.port}`);
     });

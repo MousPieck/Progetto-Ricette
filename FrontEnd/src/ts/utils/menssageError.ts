@@ -4,5 +4,6 @@ export const menssageError = (msg: string): HTMLDivElement => {
 	const menssage = <HTMLElement>document.createElement("p");
 	menssage.textContent = msg;
 	error.appendChild(menssage);
+
 	return error;
 };

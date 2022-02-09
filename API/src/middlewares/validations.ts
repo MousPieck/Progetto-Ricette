@@ -8,7 +8,7 @@ const validazioneCampi = (req: Request, res: Response, next: NextFunction) => {
     validationResult(req).throw();
     return next();
   } catch (err: any) {
-    res.status(403).send({ errors: err.array() });
+    res.send({ errors: err.array() });
     return next();
   }
 };

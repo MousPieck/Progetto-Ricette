@@ -17,7 +17,7 @@ async function ricette(): Promise<void> {
 				const card = <HTMLDivElement>document.createElement("div");
 				card.classList.add("umain_card");
 				prodotti.forEach((s: recette) => {
-					const { istruzioni, titolo, autore, immagine } = s;
+					const { istruzioni, titolo, autore, immagine }: recette = s;
 
 					card.innerHTML += `
 					<div class="card">

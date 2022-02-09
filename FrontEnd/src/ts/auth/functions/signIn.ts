@@ -4,9 +4,10 @@ import { AxiosResponse } from "axios";
 import { login } from "../../interface/interface";
 import { utenteAxios } from "../../axios";
 
+const form = <HTMLFormElement>document.getElementById("aformulario");
 const email = <HTMLInputElement>document.querySelector("#correo");
 const password = <HTMLInputElement>document.querySelector("#password");
-
+const error = <HTMLDivElement>document.querySelector(".error");
 const signIn = async () => {
 	const data: login = {
 		email: email.value,
@@ -18,16 +19,22 @@ const signIn = async () => {
 const enviareDati = async (data: login) => {
 	try {
 		await utenteAxios.post("/login", data).then((r: AxiosResponse) => {
-			const { id } = r.data;
-			if (!id) {
-				const form = <HTMLFormElement>(
-					document.getElementById("aformulario")
-				);
-				form.appendChild(menssageError("Credenziale incorrette"));
-				return;
+			const {
+				id,
+				errors,
+				msgError,
+			}: { id: string; errors: object[]; msgError: string } = r.data;
+
+			if (msgError || errors) {
+				if (!error)
+					form.appendChild(menssageError("Credenziale incorrette"));
+				setTimeout(() => {
+					form.removeChild(error);
+				}, 3000);
+			} else {
+				sessionStorage.setItem("id", id);
+				window.location.replace(URLS.UTENTI);
 			}
-			sessionStorage.setItem("id", id);
-			window.location.replace(URLS.UTENTI);
 		});
 	} catch (error) {
 		console.log(error);

@@ -4,7 +4,6 @@ import { legerreDati, resetForm } from "../legerreDati";
 import { caricareRecette } from "./caricareRecette";
 
 export function inserireDati(data: dataForm): void {
-	const file = <HTMLInputElement>document.querySelector("#ufileimg");
 	const titolo = <HTMLInputElement>document.querySelector("#uftitolo");
 	const istruzioni = <HTMLTextAreaElement>(
 		document.querySelector("#ufistruzioni")
@@ -23,7 +22,8 @@ export function inserireDati(data: dataForm): void {
 	fbtnCrea.addEventListener("click", () => {
 		const dati: dataForm = {
 			id: titolo.getAttribute("name"),
-			img: file.files[0],
+			img: (<HTMLInputElement>document.querySelector("#ufileimg"))
+				.files[0],
 			titolo: titolo.value,
 			istruzioni: istruzioni.value,
 		};

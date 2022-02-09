@@ -14,7 +14,7 @@ export async function caricareRecette(): Promise<void> {
 			card.classList.add("umain_card");
 			const { prodotti }: { prodotti: object[] } = r.data;
 			prodotti.forEach((s: recette) => {
-				const { _id, istruzioni, titolo, immagine } = s;
+				const { _id, istruzioni, titolo, immagine }: recette = s;
 				card.innerHTML += `
 					<div class="card" id="${_id}">
 					<img src="${immagine.img}" class="card-img-top"

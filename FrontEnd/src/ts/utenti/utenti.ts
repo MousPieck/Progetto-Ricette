@@ -23,26 +23,22 @@ function utentiPanele(): void {
 				const fbtnCancell = <HTMLButtonElement>(
 					document.querySelector("#ufcancel")
 				);
-				fbtnCrea.addEventListener("click", () => {
-					const file = <HTMLInputElement>(
-						document.querySelector("#ufileimg")
-					);
-					const img: File = file.files[0];
-					const titolo = <HTMLInputElement>(
-						document.querySelector("#uftitolo")
-					);
-					const istruzioni = <HTMLTextAreaElement>(
-						document.querySelector("#ufistruzioni")
-					);
+				fbtnCrea.addEventListener("click", (): void => {
 					const data: dataForm = {
-						img: img,
-						titolo: titolo.value,
-						istruzioni: istruzioni.value,
+						img: (<HTMLInputElement>(
+							document.querySelector("#ufileimg")
+						)).files[0],
+						titolo: (<HTMLInputElement>(
+							document.querySelector("#uftitolo")
+						)).value,
+						istruzioni: (<HTMLTextAreaElement>(
+							document.querySelector("#ufistruzioni")
+						)).value,
 					};
 					legerreDati(data);
 				});
 
-				fbtnCancell.addEventListener("click", () => {
+				fbtnCancell.addEventListener("click", (): void => {
 					resetForm();
 					btnCrea.style.display = "block";
 					caricareRecette();

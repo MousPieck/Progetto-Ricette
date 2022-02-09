@@ -7,12 +7,13 @@ export async function legerreDati(data: dataForm): Promise<void> {
 	resetForm();
 	await enviareDati(data);
 	caricareRecette();
+
 	btnCrea.style.display = "block";
 }
 
 async function enviareDati(data: dataForm): Promise<void> {
 	const formData = new FormData();
-	const { id, img, titolo, istruzioni } = data;
+	const { id, img, titolo, istruzioni }: dataForm = data;
 	formData.append("file", img, "file");
 	formData.append("titolo", titolo);
 	formData.append("istruzioni", istruzioni);

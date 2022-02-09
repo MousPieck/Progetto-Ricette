@@ -4,9 +4,9 @@ import { Prodotti } from '../models/produtti';
 import { IUTente } from '../interface/model-utenti';
 import { Request, Response, NextFunction } from 'express';
 
-const utenteGet = async (req: Request, res: Response, next: NextFunction) => {
+const utenteGet = async (_req: Request, res: Response, next: NextFunction) => {
   try {
-    const [totale, utenti]: [Number, Array<Object>] = await Promise.all([
+    const [totale, utenti]: [Number, Array<IUTente>] = await Promise.all([
       Utente.countDocuments(),
       Utente.find().populate('prodotti', 'titolo istruzioni')
     ]);
@@ -26,7 +26,7 @@ const utenteGetID = async (
 ): Promise<void> => {
   const { id } = req.params;
   try {
-    const utenti = await Utente.findById(id).populate(
+    const utenti: IUTente = await Utente.findById(id).populate(
       'prodotti',
       'titolo istruzioni'
     );

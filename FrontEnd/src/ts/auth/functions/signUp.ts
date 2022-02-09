@@ -14,16 +14,11 @@ const signUp = (): void => {
 	buttonSignUp.addEventListener("click", leggereDatiSignUp);
 };
 const leggereDatiSignUp = (): void => {
-	const nome = <HTMLInputElement>document.querySelector("#snome");
-	const cognome = <HTMLInputElement>document.querySelector("#scognome");
-	const email = <HTMLInputElement>document.querySelector("#correo");
-	const password = <HTMLInputElement>document.querySelector("#password");
-
 	const data: signUp = {
-		nome: nome.value,
-		cognome: cognome.value,
-		email: email.value,
-		password: password.value,
+		nome: (<HTMLInputElement>document.querySelector("#snome")).value,
+		cognome: (<HTMLInputElement>document.querySelector("#scognome")).value,
+		email: (<HTMLInputElement>document.querySelector("#correo")).value,
+		password: (<HTMLInputElement>document.querySelector("#password")).value,
 	};
 	enviareRichiestaLogin(data);
 };
@@ -65,7 +60,7 @@ async function enviareRichiestaLogin(data: signUp): Promise<void> {
 		await utenteAxios
 			.post("/signup", data)
 			.then((res: AxiosResponse<any>): void => {
-				const { msg } = res.data;
+				const { msg }: { msg: string } = res.data;
 				if (msg == "register") {
 					window.location.replace(URLS.LOGIN);
 					return;

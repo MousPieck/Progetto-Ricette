@@ -3,8 +3,9 @@ import fs from 'fs-extra';
 import { Prodotti } from './../models/produtti';
 import { Utente } from '../models/usuarios';
 import { IUTente } from '../interface/model-utenti';
-import { Request, Response, NextFunction, request } from 'express';
-import { Recette } from '../interface/prodotti-controllers';
+import { Request, Response, NextFunction } from 'express';
+import { IUProdotti, Recette } from '../interface/prodotti-controllers';
+
 cloudinary.v2.config({
   cloud_name: 'dxwmczjzj',
   api_key: '972962934716321',
@@ -16,7 +17,7 @@ const prodottiGet = async (
   next: NextFunction
 ): Promise<void> => {
   try {
-    const [totale, prodotti]: [Number, Array<Object>] = await Promise.all([
+    const [totale, prodotti]: [Number, Array<IUProdotti>] = await Promise.all([
       Prodotti.countDocuments(),
       Prodotti.find().populate('autore', 'nome')
     ]);
@@ -37,7 +38,7 @@ const prodottiGetId = async (
 ): Promise<void> => {
   try {
     const { id } = req.params;
-    const [totale, prodotti]: [number, Array<object>] = await Promise.all([
+    const [totale, prodotti]: [number, Array<IUProdotti>] = await Promise.all([
       Prodotti.countDocuments({ autore: id }),
       Prodotti.find({ autore: id }).populate('autore', 'nome cognome')
     ]);
@@ -71,7 +72,7 @@ const prodottiPost = async (
     };
     const { id } = req.params;
 
-    const [prodotti, utente] = await Promise.all([
+    const [prodotti, utente]: [IUProdotti, IUTente] = await Promise.all([
       new Prodotti(recette),
       Utente.findById(id)
     ]);
@@ -103,12 +104,11 @@ const prodottiPut = async (
   try {
     const prodotto: Recette = await Prodotti.findById(id);
 
-    const [, immagine]: [any, cloudinary.UploadApiResponse] = await Promise.all(
-      [
+    const [, immagine]: [null, cloudinary.UploadApiResponse] =
+      await Promise.all([
         cloudinary.v2.uploader.destroy(prodotto.immagine.public_id),
         cloudinary.v2.uploader.upload(path)
-      ]
-    );
+      ]);
 
     const { titolo, istruzioni }: Recette = req.body;
     const recette: Recette = {
@@ -138,7 +138,7 @@ const prodottiDeleteId = async (
 ): Promise<void> => {
   try {
     const { id } = req.params;
-    const [prodotto]: [Recette, any] = await Promise.all([
+    const [prodotto]: [Recette, null] = await Promise.all([
       Prodotti.findByIdAndDelete(id),
       Utente.findOneAndUpdate({ prodotti: id }, { $pull: { prodotti: id } })
     ]);

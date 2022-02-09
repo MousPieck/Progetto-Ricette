@@ -6,9 +6,9 @@ import { login } from "./ts/auth/login";
 import { utentiPanele } from "./ts/utenti/utenti";
 import { validatareCredenziale } from "./ts/auth/validator/validator";
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
 	validatareCredenziale();
 	login();
-	mostrareRicette();
 	utentiPanele();
+	await mostrareRicette();
 });

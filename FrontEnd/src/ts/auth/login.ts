@@ -4,9 +4,8 @@ import { signUp } from "./functions/signUp";
 const btnSignIn = <HTMLInputElement>document.querySelector("#abt1");
 const btnSignUp = <HTMLInputElement>document.querySelector("#abt2");
 const btnLogout = <HTMLInputElement>document.querySelector("#logout");
-
 function login(): void {
-	if (btnSignIn && btnSignUp) {
+	if (window.location.href === URLS.LOGIN) {
 		btnSignIn.addEventListener("click", signIn);
 		btnSignUp.addEventListener("click", signUp);
 	}
